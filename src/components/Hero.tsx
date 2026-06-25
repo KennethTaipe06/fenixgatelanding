@@ -53,6 +53,7 @@ export default function Hero() {
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, W, H);
       // embers
+      ctx.shadowBlur = 10;
       for (let i = 0; i < embers.length; i++) {
         const e = embers[i];
         e.vy += e.accel;
@@ -65,11 +66,10 @@ export default function Hero() {
         const hue = e.hueStart - p * 25;
         const light = 60 - p * 15;
         const rad = e.r * (1 - p * 0.4);
+        ctx.shadowColor = `hsla(${Math.max(0, hue)},100%,50%,0.7)`;
         ctx.beginPath();
         ctx.arc(e.x, e.y, Math.max(0.3, rad), 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${Math.max(0, hue)},100%,${light}%,${Math.max(0, alpha) * 0.85})`;
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = `hsla(${Math.max(0, hue)},100%,50%,0.7)`;
         ctx.fill();
         if (e.life >= e.max || e.y < -20) embers[i] = makeEmber();
       }
@@ -79,7 +79,8 @@ export default function Hero() {
 
     resize(); init();
     raf = requestAnimationFrame(tick);
-    window.addEventListener('resize', () => { resize(); init(); });
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { resize(); init(); }, 150); });
 
     const heroEl = canvas.parentElement;
     if (heroEl && 'IntersectionObserver' in window) {
@@ -101,12 +102,19 @@ export default function Hero() {
     const laptop = laptopRef.current;
 
     if (fine && laptop) {
+      let rafPending = false;
+      let lastDx = 0, lastDy = 0;
       const onMove = (e: MouseEvent) => {
         const r = laptop.getBoundingClientRect();
-        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        const dx = (e.clientX - cx) / window.innerWidth;
-        const dy = (e.clientY - cy) / window.innerHeight;
-        laptop.style.transform = `rotateY(${dx * 8}deg) rotateX(${-dy * 8}deg)`;
+        lastDx = (e.clientX - (r.left + r.width / 2)) / window.innerWidth;
+        lastDy = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(() => {
+            laptop.style.transform = `rotateY(${lastDx * 8}deg) rotateX(${-lastDy * 8}deg)`;
+            rafPending = false;
+          });
+        }
       };
       window.addEventListener('mousemove', onMove);
       return () => window.removeEventListener('mousemove', onMove);
@@ -224,7 +232,7 @@ export default function Hero() {
               <div className="laptop-glow" aria-hidden="true"></div>
             </div>
             */}
-            <img src="/Logos/Logo con slogan.png" alt="FenixGate - Fabrica de Software" className="hero-logo-img" />
+            <img src="/Logos/Logo con slogan.png" alt="FenixGate - Fabrica de Software" className="hero-logo-img" width="480" height="240" fetchPriority="high" />
           </div>
         </div>
       </div>
