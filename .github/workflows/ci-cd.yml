@@ -40,8 +40,8 @@ jobs:
       - name: Build & Push
         uses: docker/build-push-action@v5
         with:
-          context: ./fenixgate-astro
-          file: ./fenixgate-astro/Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: |
             ghcr.io/${{ steps.lower.outputs.owner }}/fenixgate:latest

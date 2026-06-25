@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fenixgate
-  namespace: default
+  namespace: fg
   labels:
     app: fenixgate
 spec:
