@@ -62,10 +62,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            kubectl apply -f /etc/fg/fenixgatelanding/k8s/namespace.yaml
-            kubectl apply -f /etc/fg/fenixgatelanding/k8s/deployment.yaml
-            kubectl apply -f /etc/fg/fenixgatelanding/k8s/service.yaml
-            kubectl apply -f /etc/fg/fenixgatelanding/k8s/ingress.yaml
+            kubectl apply -f /etc/fg/fenixgatelanding/k8s/fenixgate.yaml
             kubectl set image deployment/fenixgate \
               fenixgate=ghcr.io/${{ needs.build-and-push.outputs.owner }}/fenixgate:${{ github.sha }} \
               -n fg
