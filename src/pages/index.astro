@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.tsx';
+import Hero from '../components/Hero.tsx';
+import Pillars from '../components/Pillars.tsx';
+import Services from '../components/Services.tsx';
+import Stats from '../components/Stats.tsx';
+import BannerTech from '../components/BannerTech.tsx';
+import Process from '../components/Process.tsx';
+import Portfolio from '../components/Portfolio.tsx';
+import CTA from '../components/CTA.tsx';
+import ContactStrip from '../components/ContactStrip.tsx';
+import Footer from '../components/Footer.tsx';
+import GlobalEffects from '../components/GlobalEffects.tsx';
+---
+
+<Layout>
+  <GlobalEffects client:load />
+  <Navbar client:load />
+  <main>
+    <Hero client:load />
+    <Pillars client:visible />
+    <Services client:visible />
+    <Stats client:visible />
+    <BannerTech client:visible />
+    <Process client:visible />
+    <Portfolio client:visible />
+    <CTA />
+    <ContactStrip />
+  </main>
+  <Footer />
+</Layout>
