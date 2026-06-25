@@ -62,11 +62,11 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            kubectl apply -f /etc/fg/fenixgatelanding/k8s/deployment.yaml
-            kubectl apply -f /etc/fg/fenixgatelanding/k8s/service.yaml
-            kubectl apply -f /etc/fg/fenixgatelanding/k8s/ingress.yaml
+            kubectl apply -f /etc/fg/fenixgatelanding/k8s/deployment.yaml -n fg
+            kubectl apply -f /etc/fg/fenixgatelanding/k8s/service.yaml -n fg
+            kubectl apply -f /etc/fg/fenixgatelanding/k8s/ingress.yaml -n fg
             kubectl set image deployment/fenixgate \
               fenixgate=ghcr.io/${{ needs.build-and-push.outputs.owner }}/fenixgate:${{ github.sha }} \
-              -n default
-            kubectl rollout status deployment/fenixgate -n default --timeout=180s || \
-              (kubectl rollout undo deployment/fenixgate -n default && exit 1)
+              -n fg
+            kubectl rollout status deployment/fenixgate -n fg --timeout=180s || \
+              (kubectl rollout undo deployment/fenixgate -n fg && exit 1)
