@@ -1,4 +1,4 @@
-const links = ['Servicios', 'Portafolio', 'Proceso', 'Contacto'];
+const links = ['Servicios', 'Portafolio', 'Proceso', 'FAQ', 'Contacto'];
 
 export default function Footer() {
   return (
@@ -14,7 +14,7 @@ export default function Footer() {
           ))}
         </nav>
         <div className="footer-copy">
-          <p>&copy; 2025 FenixGate. Todos los derechos reservados.</p>
+          <p>&copy; 2026 FenixGate. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

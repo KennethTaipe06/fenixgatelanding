@@ -4,21 +4,120 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
 }
 
 const {
-  title = 'FenixGate — Fabrica de Software',
-  description = 'FenixGate, fábrica de software ecuatoriana. Software escalable a medida, bots con IA, automatizaciones y más.',
+  title = 'FenixGate | Software a Medida Ecuador — Bots IA, Automatizaciones y Apps Web',
+  description = 'FenixGate es una fábrica de software ecuatoriana. Desarrollamos software escalable a medida, bots con IA para WhatsApp, automatizaciones de procesos y páginas web. Cotización gratuita en 24 horas.',
+  canonical = 'https://fenixgate.lat/',
+  ogImage = 'https://fenixgate.lat/Logos/Logo con slogan.png',
 } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://fenixgate.lat/#organization",
+      "name": "FenixGate",
+      "alternateName": "FenixGate Software Factory",
+      "url": "https://fenixgate.lat/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://fenixgate.lat/Logos/logo solo.png",
+        "width": 200,
+        "height": 200
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+593-99-887-8789",
+          "contactType": "sales",
+          "availableLanguage": ["Spanish", "English"],
+          "contactOption": "TollFree"
+        }
+      ],
+      "email": "kennethtaipe@gmail.com",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Ecuador"
+      },
+      "areaServed": "Worldwide",
+      "knowsAbout": [
+        "Software a medida",
+        "Bots con Inteligencia Artificial",
+        "Automatización de procesos",
+        "Desarrollo web",
+        "Integración de APIs",
+        "Consultoría tecnológica"
+      ],
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://fenixgate.lat/#website",
+      "url": "https://fenixgate.lat/",
+      "name": "FenixGate",
+      "description": "Fábrica de software ecuatoriana. Software escalable a medida, bots con IA y automatizaciones.",
+      "publisher": { "@id": "https://fenixgate.lat/#organization" },
+      "inLanguage": "es"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://fenixgate.lat/#webpage",
+      "url": "https://fenixgate.lat/",
+      "name": title,
+      "description": description,
+      "isPartOf": { "@id": "https://fenixgate.lat/#website" },
+      "about": { "@id": "https://fenixgate.lat/#organization" },
+      "inLanguage": "es",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://fenixgate.lat/" }]
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://fenixgate.lat/#proceso",
+      "name": "Cómo trabajamos: de la idea al lanzamiento",
+      "description": "Proceso de desarrollo de software de FenixGate en 4 pasos.",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Entendemos", "text": "Reunión inicial donde definimos alcance, objetivos y expectativas de tu proyecto." },
+        { "@type": "HowToStep", "position": 2, "name": "Diseñamos", "text": "Arquitectura técnica y propuesta visual adaptada a tu marca y usuarios." },
+        { "@type": "HowToStep", "position": 3, "name": "Construimos", "text": "Desarrollo ágil con entregas iterativas para que veas avances desde el inicio." },
+        { "@type": "HowToStep", "position": 4, "name": "Lanzamos", "text": "Deploy, pruebas exhaustivas y soporte post-entrega para un lanzamiento sin sorpresas." }
+      ]
+    }
+  ]
+};
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-EC">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="es_EC" />
+  <meta property="og:site_name" content="FenixGate" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/png" href="/Logos/logo solo.png" />

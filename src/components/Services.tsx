@@ -15,7 +15,7 @@ const services = [
     desc: 'Elimina tareas repetitivas que consumen tu tiempo. Facturación automática, seguimiento de emails, sincronización de datos y más.',
     features: ['Facturación automática', 'Seguimiento de emails', 'Sync de datos', 'Reportes automáticos'],
     cta: 'Automatizar mi negocio',
-    photo: '/Automatizacion de procesos.png',
+    photo: '/automatizacion-de-procesos.png',
     icon: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>,
   },
   {
@@ -23,7 +23,7 @@ const services = [
     desc: 'Sistemas construidos desde cero para tu proceso exacto. No adaptas tu negocio al software, el software se adapta a ti.',
     features: ['ERP / CRM custom', 'Dashboards a medida', 'Sistemas internos', 'Apps de escritorio'],
     cta: 'Construir mi sistema',
-    photo: '/software a medida.png',
+    photo: '/software-a-medida.png',
     icon: <><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></>,
   },
   {
@@ -31,7 +31,7 @@ const services = [
     desc: 'Sitios web que cargan rapido, se ven increibles y convierten visitantes en clientes. SEO optimizado desde el primer dia.',
     features: ['Landing pages', 'E-commerce', 'SEO optimizado', 'Diseño responsive'],
     cta: 'Crear mi web',
-    photo: '/paginas web.png',
+    photo: '/paginas-web.png',
     icon: <><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>,
   },
   {
@@ -39,7 +39,7 @@ const services = [
     desc: 'Te ayudamos a tomar las mejores decisiones técnicas. Auditoría de tu stack, roadmap de crecimiento y arquitectura escalable.',
     features: ['Auditoría tech', 'Roadmap de crecimiento', 'Arquitectura escalable', 'Stack review'],
     cta: 'Agendar consulta',
-    photo: '/Screenshot 2026-06-24 142040.png',
+    photo: '/consultoria-tecnologica.png',
     icon: <><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></>,
   },
   {

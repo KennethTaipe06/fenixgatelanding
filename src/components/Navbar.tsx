@@ -48,6 +48,7 @@ export default function Navbar() {
               <li><a href="#servicios" onClick={(e) => smoothScroll(e, '#servicios')}>Servicios</a></li>
               <li><a href="#portafolio" onClick={(e) => smoothScroll(e, '#portafolio')}>Portafolio</a></li>
               <li><a href="#proceso" onClick={(e) => smoothScroll(e, '#proceso')}>Proceso</a></li>
+              <li><a href="#faq" onClick={(e) => smoothScroll(e, '#faq')}>FAQ</a></li>
               <li><a href="#contacto" onClick={(e) => smoothScroll(e, '#contacto')}>Contacto</a></li>
             </ul>
             <a href="https://api.whatsapp.com/send?phone=593998878789" target="_blank" rel="noopener noreferrer" className="btn-primary nav-cta-desk" style={{ padding: '10px 18px', fontSize: '13px' }}>Hablemos</a>
@@ -66,6 +67,7 @@ export default function Navbar() {
         <a href="#servicios" onClick={(e) => { smoothScroll(e, '#servicios'); closeMenu(); }}>Servicios</a>
         <a href="#portafolio" onClick={(e) => { smoothScroll(e, '#portafolio'); closeMenu(); }}>Portafolio</a>
         <a href="#proceso" onClick={(e) => { smoothScroll(e, '#proceso'); closeMenu(); }}>Proceso</a>
+        <a href="#faq" onClick={(e) => { smoothScroll(e, '#faq'); closeMenu(); }}>FAQ</a>
         <a href="#contacto" onClick={(e) => { smoothScroll(e, '#contacto'); closeMenu(); }}>Contacto</a>
         <a href="https://api.whatsapp.com/send?phone=593998878789" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: '12px' }}>Hablemos</a>
       </div>
